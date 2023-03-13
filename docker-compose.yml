@@ -31,3 +31,16 @@ services:
       - TYPEORM_DATABASE=${TYPEORM_DATABASE}
       - TYPEORM_PORT=${TYPEORM_PORT}
       - TYPEORM_HOST=db
+  client:
+    container_name: client-nest-course
+    restart: unless-stopped
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
+    depends_on:
+      - backend
+
+
+
